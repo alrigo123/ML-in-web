@@ -5,10 +5,11 @@
 nest new "mi-backend"
 
 // START SERVER
- - npm run start || npm run start:dev
+* npm run start || npm run start:dev
 
 # INSTALAR LO NECESARIO
-- npm install @nestjs/typeorm typeorm mysql2
+- npm install @nestjs/typeorm typeorm mysql2 cors
+- npm install bcryptjs @nestjs/jwt @nestjs/passport passport passport-jwt
 
 # Crear un Módulo, Controlador y Servicio para el CRUD (CREATE FOLDER FOR "usuario")
 - nest g module "path"
@@ -24,12 +25,10 @@ Abre el archivo .prettierrc en la raíz del proyecto y agrega esta configuració
       "endOfLine": "lf"
     }
 
-Guarda el archivo y ejecuta:
+# Guarda el archivo y ejecuta:
 - npx prettier --write .
 
-# PARA LOGIN Y REGISTER
-- npm install bcryptjs @nestjs/jwt @nestjs/passport passport passport-jwt
-
+# CONFIGURAR CORS PARA EL ENVIO DE PETICIONES
 
 AQUI NOS QUEDAMOS DEL CHATGPT:
 ok, ahora entonces ayudame a implementar el login y register. Con todo lo que implican esas funciones, jwt, hassh, etc

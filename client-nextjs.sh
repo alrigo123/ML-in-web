@@ -5,4 +5,4 @@
 - npm install next react react-dom
 
 # START SERVER
-- npm run dev
+* npm run dev

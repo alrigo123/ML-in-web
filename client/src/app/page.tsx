@@ -1,10 +1,8 @@
-import styles from "./page.module.css";
-import PrediccionPage from './pages/prediction';
-
+import Index from "./pages/Index";
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <PrediccionPage />
+    <div>
+      <Index />
     </div>
-  );
+  );  
 }
