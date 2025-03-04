@@ -3,7 +3,7 @@ import { Controller, Get, Post, Put, Delete, Body, Param } from '@nestjs/common'
 import { UsuarioService } from './usuario.service';
 import { Usuario } from './usuario.entity';
 
-@Controller('usuarios') // Esto define el prefijo para los endpoints
+@Controller('users') // Esto define el prefijo para los endpoints
 export class UsuarioController {
   constructor(private readonly usuarioService: UsuarioService) {}
 

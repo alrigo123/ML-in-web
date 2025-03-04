@@ -32,7 +32,7 @@ def train_model(target_variable: str):
     
     return df, features, model
 
-def predict_future_xgboost(n_days: int, target_variable: str):
+def predict_future_random_forest(n_days: int, target_variable: str):
     """
     Realiza predicciones futuras.
     Parámetros:

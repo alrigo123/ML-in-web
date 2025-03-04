@@ -6,14 +6,14 @@ import axios from 'axios';
 
 @Controller('predict')
 export class PredictController {
-  @Get()
-  async getPrediction(
+  @Get('/xgboost')
+  async getPredictionXgboost(
     @Query('n') n: number,
     @Query('variable') variable: string
   ) {
     try {
       // Asegúrate de que la URL y el puerto sean correctos para tu API de Python
-      const response = await axios.get(`http://localhost:8000/predict?n=${n}&variable=${variable}`);
+      const response = await axios.get(`http://localhost:8000/predict/xgboost?n=${n}&variable=${variable}`);
       // console.log("DEL SERVER TYPESCRIPT: ", response.data);
       console.log("DEL SERVER TYPESCRIPT:",variable, "Predicciones:", response.data);
       return response.data;
@@ -22,4 +22,22 @@ export class PredictController {
       throw new HttpException('Error al obtener la predicción', HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
+
+@Get('/random_forest')
+async getPredictionRandomForest(
+  @Query('n') n: number,
+  @Query('variable') variable: string
+) {
+  try {
+    // Asegúrate de que la URL y el puerto sean correctos para tu API de Python
+    const response = await axios.get(`http://localhost:8000/predict/random_forest?n=${n}&variable=${variable}`);
+    // console.log("DEL SERVER TYPESCRIPT: ", response.data);
+    console.log("DEL SERVER TYPESCRIPT:",variable, "Predicciones:", response.data);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching prediction:', error);
+    throw new HttpException('Error al obtener la predicción', HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+}
+
 }
