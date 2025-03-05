@@ -6,22 +6,34 @@ import axios from "axios";
 
 const UsersPage = () => {
 
-    const [usuarios, setUsuarios] = useState([]);
+  const [usuarios, setUsuarios] = useState([]);
 
-    useEffect(() => {
-        async function fetchUsuarios() {
-            try {
-                const res = await axios.get("http://localhost:7000/users");
-                setUsuarios(res.data);
-            } catch (error) {
-                console.error("Error al obtener los usuarios", error);
-            }
-        }
-        fetchUsuarios();
-    }, []);
+  useEffect(() => {
+    async function fetchUsuarios() {
+      try {
+        const res = await axios.get("http://localhost:7000/users");
+        setUsuarios(res.data);
+      } catch (error) {
+        console.error("Error al obtener los usuarios", error);
+      }
+    }
+    fetchUsuarios();
+  }, []);
 
-    return (
-        <div className="p-6">
+  const handleDelete = async (id: number | string) => {
+    try {
+      await axios.delete(`http://localhost:7000/users/${id}`);
+      // Actualizamos el estado eliminando el usuario borrado
+      setUsuarios(usuarios.filter((usuario: any) => usuario.id !== id));
+    } catch (error) {
+      console.error("Error al eliminar el usuario", error);
+    }
+  };
+
+
+
+  return (
+    <div className="p-6">
       <h1 className="text-2xl font-bold">Listado de Usuarios</h1>
       <Link
         href="/dashboard/users/new"
@@ -38,20 +50,25 @@ const UsersPage = () => {
             <span>{usuario.nombre}</span>
             <span>{usuario.email}</span>
             <span>{usuario.password}</span>
-            <div>
+            <div className="flex gap-2">
               <Link
-                href={`/dashboard/usuarios/${usuario.id}`}
-                className="text-blue-600 mr-2"
+                href={`/dashboard/users/${usuario.id}`}
+                className="text-blue-600"
               >
                 Editar
               </Link>
-              {/* Aquí podrías incluir un botón para eliminar si lo deseas */}
+              <button
+                onClick={() => handleDelete(usuario.id)}
+                className="bg-red-600 text-white p-2 rounded"
+              >
+                Eliminar
+              </button>
             </div>
           </li>
         ))}
       </ul>
     </div>
-    );
+  );
 }
 
 export default UsersPage

@@ -10,7 +10,7 @@ export class UsuarioService {
     @InjectRepository(Usuario)
     private readonly usuarioRepo: Repository<Usuario>,
   ) { }
-  
+
   /* CRUD FUNCTIONS - FOR THE USER */
   async findAll(): Promise<Usuario[]> {
     return this.usuarioRepo.find();

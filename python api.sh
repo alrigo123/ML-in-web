@@ -10,7 +10,7 @@
 http://localhost:8000/predict?n=30&variable=Temp_max
 http://localhost:8000/predict?n=30&variable=Temp_min
 
-# PREDICT API SERVER ADD
+# PREDICT API SERVER ADD CORS
 "
 from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()

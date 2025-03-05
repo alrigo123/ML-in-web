@@ -1,10 +1,9 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import "./globals.css";
-
 // IMPORT CONSISTENT COMPONENTS
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import { ReactNode } from "react";
-
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
