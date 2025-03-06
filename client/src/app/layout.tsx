@@ -1,5 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import "./globals.css";
+
 // IMPORT CONSISTENT COMPONENTS
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";

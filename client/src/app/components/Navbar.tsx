@@ -1,15 +1,36 @@
 'use client'
+import { useState } from 'react';
 import Link from 'next/link';
+import '../styles/Navbar.css';
 
-export default function Navbar() {
+const Navbar: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(prev => !prev);
+  };
 
   return (
-    <nav className="bg-blue-600 text-white p-4 flex gap-4">
-      <Link href="/">Inicio</Link>
-      <Link href="/dashboard">Dashboard</Link>
-      <Link href="/auth/login">Login</Link>
-      <Link href="/auth/register">Registro</Link>
-      <Link href="/prediction ">Predictions</Link>
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link href="/" className="navbar-brand">
+          MiWeb
+        </Link>
+        <button className="navbar-toggle" onClick={toggleMenu}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+        <div className={`navbar-menu ${menuOpen ? 'active' : ''}`}>
+          <Link href="/" onClick={() => setMenuOpen(false)}>Inicio</Link>
+          <Link href="/dashboard" onClick={() => setMenuOpen(false)}>Dashboard</Link>
+          <Link href="/auth/login" onClick={() => setMenuOpen(false)}>Login</Link>
+          <Link href="/auth/register" onClick={() => setMenuOpen(false)}>Registro</Link>
+          <Link href="/prediction" onClick={() => setMenuOpen(false)}>Predictions</Link>
+        </div>
+      </div>
     </nav>
   );
-}
+};
+
+export default Navbar;
