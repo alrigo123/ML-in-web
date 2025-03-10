@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/await-thenable */
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -10,6 +12,10 @@ export class UsuarioService {
     @InjectRepository(Usuario)
     private readonly usuarioRepo: Repository<Usuario>,
   ) { }
+
+  /* FOR THE LOGIN */
+  private users: Usuario[] = [];
+  private idCounter = 1;
 
   /* CRUD FUNCTIONS - FOR THE USER */
   async findAll(): Promise<Usuario[]> {
@@ -34,5 +40,16 @@ export class UsuarioService {
 
   async delete(id: number): Promise<void> {
     await this.usuarioRepo.delete(id);
+  }
+
+  /* AUTH FUNCTIONS */
+  async createUser(userData: { nombre: string, email: string, password: string }): Promise<Usuario> {
+    const newUser = { id: this.idCounter++, ...userData };
+    await this.users.push(newUser);
+    return newUser;
+  }
+
+  async findByEmail(email: string): Promise<Usuario | undefined> {
+    return await this.users.find(user => user.email === email);
   }
 }

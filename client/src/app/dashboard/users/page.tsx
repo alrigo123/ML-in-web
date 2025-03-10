@@ -30,14 +30,12 @@ const UsersPage = () => {
     }
   };
 
-
-
   return (
     <div className="p-6">
       <h1 className="text-2xl font-bold">Listado de Usuarios</h1>
       <Link
         href="/dashboard/users/new"
-        className="bg-green-500 text-white p-2 rounded inline-block my-4"
+        className="bg-green-500 text-dark p-2 rounded inline-block my-4"
       >
         Crear Nuevo Usuario
       </Link>
@@ -59,7 +57,7 @@ const UsersPage = () => {
               </Link>
               <button
                 onClick={() => handleDelete(usuario.id)}
-                className="bg-red-600 text-white p-2 rounded"
+                className="bg-red-600 text-dark p-2 rounded"
               >
                 Eliminar
               </button>

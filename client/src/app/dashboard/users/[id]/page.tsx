@@ -40,7 +40,7 @@ const HandleUser = () => {
 
     return (
         <div className="p-6 max-w-md mx-auto">
-            <h1 className="text-2xl font-bold mb-4">Editar Usuario {id}</h1>
+            <h1 className="text-2xl font-bold mb-4">Editar Usuario {nombre}</h1>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"

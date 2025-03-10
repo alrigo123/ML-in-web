@@ -4,7 +4,6 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { ModelTest } from "./models-test.entity";
 import { Repository } from "typeorm";
 
-
 @Injectable()
 export class ModelsTestService {
     constructor(
@@ -13,7 +12,6 @@ export class ModelsTestService {
     ) { }
 
     /* CRUD FUNCTIONS FOR THE MODEL */
-
     async findAll(): Promise<ModelTest[]> {
         return this.modelRepo.find();
     }
