@@ -4,7 +4,7 @@
 # Crear un nuevo proyecto
 nest new "mi-backend"
 
-// START SERVER
+// START SERVER //
 * npm run start || npm run start:dev
 
 # INSTALAR LO NECESARIO
