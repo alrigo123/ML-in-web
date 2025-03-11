@@ -8,7 +8,7 @@ nest new "mi-backend"
 * npm run start || npm run start:dev
 
 # INSTALAR LO NECESARIO
-- npm install @nestjs/typeorm typeorm mysql2 cors
+- npm install @nestjs/typeorm typeorm mysql2 cors  @nestjs/config
 - npm install bcryptjs bcrypt @nestjs/jwt @nestjs/passport passport passport-jwt
 
 # Crear un Módulo, Controlador y Servicio para el CRUD (CREATE FOLDER FOR "usuario")
