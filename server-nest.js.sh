@@ -11,6 +11,9 @@ nest new "mi-backend"
 - npm install @nestjs/typeorm typeorm mysql2 cors  @nestjs/config
 - npm install bcryptjs bcrypt @nestjs/jwt @nestjs/passport passport passport-jwt
 
+# Create full users folder with controllers entities and Data Transfer Object DTO
+nest g res users --no-spec
+
 # Crear un Módulo, Controlador y Servicio para el CRUD (CREATE FOLDER FOR "usuario")
 - nest g module "path"
 - nest g controller "path" --no-spec

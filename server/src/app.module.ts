@@ -10,6 +10,7 @@ import { ModelTest } from "./models-test/models-test.entity";
 // Import Modules
 import { PredictModule } from "./predict/predict.module";
 import { ModelsTestModule } from "./models-test/models-test.module";
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -23,7 +24,7 @@ import { ModelsTestModule } from "./models-test/models-test.module";
       entities: [ModelTest], // Class for te DB Tables
     }),
     PredictModule, // Calls python API to get the model result
-    ModelsTestModule, // Importa el módulo de modelos (funciones CRUD [tanto de services como module]),
+    ModelsTestModule, UsersModule, // Importa el módulo de modelos (funciones CRUD [tanto de services como module]),
   ],
   controllers: [AppController],
   providers: [AppService],
