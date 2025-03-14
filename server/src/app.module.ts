@@ -11,6 +11,8 @@ import { ModelTest } from "./models-test/models-test.entity";
 import { PredictModule } from "./predict/predict.module";
 import { ModelsTestModule } from "./models-test/models-test.module";
 import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import { User } from "./users/entities/user.entity";
 
 @Module({
   imports: [
@@ -21,10 +23,10 @@ import { UsersModule } from './users/users.module';
       username: "root", // Usuario de MySQL
       password: "", // Contraseña (deja vacío si no tienes contraseña en XAMPP)
       database: "ml-models", // Nombre de tu base de datos
-      entities: [ModelTest], // Class for te DB Tables
+      entities: [ModelTest, User], // Class for te DB Tables
     }),
     PredictModule, // Calls python API to get the model result
-    ModelsTestModule, UsersModule, // Importa el módulo de modelos (funciones CRUD [tanto de services como module]),
+    ModelsTestModule, UsersModule, AuthModule, // Importa el módulo de modelos (funciones CRUD [tanto de services como module]),
   ],
   controllers: [AppController],
   providers: [AppService],

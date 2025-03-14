@@ -19,6 +19,14 @@ nest g res users --no-spec
 - nest g controller "path" --no-spec
 - nest g service "path" --no-spec
 
+# GUARD
+''' los guards son una funcionalidad que permite controlar si una determinada
+ruta o endpoint en una aplicación puede ser accedida por un cliente o no.
+Los guards se pueden utilizar para aplicar lógica de autenticación,
+autorización o cualquier otro tipo de validación antes de permitir
+que una solicitud llegue al controlador correspondiente. '''
+- nest g guard auth --no-spec
+
 ## ERROR DE PRETTIER
 * Delete ␍eslintprettier/prettier
 Solución Configurar Prettier para Usar LF
