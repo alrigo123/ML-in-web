@@ -7,7 +7,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { Request } from '@nestjs/common';
+import { Request } from 'express';
 import { Observable } from 'rxjs';
 import { jwtConstants } from '../constants/jwt.constant';
 
@@ -23,27 +23,30 @@ export class AuthGuard implements CanActivate {
   async canActivate(context: ExecutionContext): Promise<boolean> {
     // El objeto context proporciona información
     // sobre la solicitud entrante y el entorno de ejecución.
-    const request = context.switchToHttp().getRequest();
-    const token = this.extractTokenFromHeader(request as Request)
+    const request = context.switchToHttp().getRequest<Request>();
+    const token = this.extractTokenFromHeader(request)
 
     if (!token) {
-      throw new UnauthorizedException()
+      throw new UnauthorizedException("Missing or invalid token");
     }
 
     try {
-      const payload = await this.jwtService.verifyAsync(token as string, {
+      const payload = await this.jwtService.verifyAsync(token, {
         secret: jwtConstants.secret,
       });
-      request.user = payload;
-    } catch (error) {
-      throw new UnauthorizedException();
-    }
 
+      (request as any).user = payload
+    } catch (error) {
+      throw new UnauthorizedException("Invalid or expired token");
+    }
     return true // o Promise.resolve(false), dependiendo de la lógica de tu guard.
   }
 
-  private extractTokenFromHeader(request: Request) {
-    const [type, token] = (request.headers as any).authorization?.split(" ") ?? [];
+  private extractTokenFromHeader(request: Request): string | undefined {
+    const authHeader = request.headers.authorization;
+    if (!authHeader) return undefined;
+
+    const [type, token] = authHeader.split(" ");
     return type === "Bearer" ? token : undefined;
   }
 }

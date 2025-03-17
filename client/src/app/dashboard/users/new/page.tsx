@@ -5,7 +5,7 @@ import axios from "axios";
 
 const NewUser = () => {
 
-    const [nombre, setNombre] = useState("");
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const router = useRouter();
@@ -13,7 +13,7 @@ const NewUser = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:7000/users", { nombre, email, password });
+            await axios.post("http://localhost:7000/users", { name, email, password });
             router.push("/dashboard/users");
         } catch (error) {
             console.error("Error al crear el usuario", error);
@@ -26,8 +26,8 @@ const NewUser = () => {
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    value={nombre}
-                    onChange={(e) => setNombre(e.target.value)}
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     placeholder="Nombre del usuario"
                     className="w-full p-2 border mb-4"
                     required
