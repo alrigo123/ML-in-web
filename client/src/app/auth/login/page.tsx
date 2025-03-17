@@ -149,6 +149,7 @@ const Login = () => {
                 <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
                 <button type="submit">Login</button>
             </form>
+            FALTA EL LOGOUT RAAA
             {error && <p className="text-danger">{error}</p>}
         </div>
     );
