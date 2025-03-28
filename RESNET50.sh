@@ -7,9 +7,7 @@ https://www.kaggle.com/datasets/mohammedmaazshaikh/formula-1-championship-datase
 https://ergast.com/mrd/ API F1
 
 # MODELS TO TEST
-https://www.kaggle.com/code/aakhlopov/simple-custom-resnet-with-colab
-https://www.kaggle.com/code/farzadnekouei/imbalanced-garbage-classification-resnet50/input
-https://www.kaggle.com/code/gaborfodor/resnet50-example/notebook
+https://www.kaggle.com/code/farzadnekouei/imbalanced-garbage-classification-resnet50/input ("INTERESTING WAY TO ARRANGE (ORGANIZE) A GOOGLE COLAB")
 https://github.com/tonmoy50/resnet50withstl10/blob/main/resnet50_and_stl10.ipynb
 
 
