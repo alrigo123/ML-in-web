@@ -11,4 +11,4 @@ https://www.kaggle.com/code/farzadnekouei/imbalanced-garbage-classification-resn
 https://github.com/tonmoy50/resnet50withstl10/blob/main/resnet50_and_stl10.ipynb
 
 
-https://www.kaggle.com/code/ruslankl/brain-tumor-detection-v1-0-cnn-vgg-16/notebook *VGG16*
+https://www.kaggle.com/code/ruslankl/brain-tumor-detection-v1-0-cnn-vgg-16/notebook *VGG16* 
