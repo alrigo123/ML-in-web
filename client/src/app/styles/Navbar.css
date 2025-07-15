@@ -10,7 +10,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between; /* Marca a la izquierda y menú a la derecha */
-  max-width: 1200px;
   margin: auto;
   position: relative;
 }

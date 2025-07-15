@@ -1,4 +1,4 @@
-[] RAIZ "/" -> improve desgig
+[X] ROOT "/" -> improve desgig
 [] LOGIN  -> DESIGN
 [] DASHBOARD (LOGGED) -> LOGOUT BUTTON TO END SESSION
 [] END SESSION IN TEH FLOW OF PREDICTIONS IN THE NAVBAR
