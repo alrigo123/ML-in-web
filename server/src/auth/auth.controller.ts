@@ -25,8 +25,9 @@ export class AuthController {
     }
 
     @HttpCode(HttpStatus.OK)
-    @Post("login")
-    login(@Body() loginDto: LoginDto) {
+    @Post('login')
+    async login(@Body() loginDto: LoginDto) {
+        // loginDto.identifier can be email OR name
         return this.authService.login(loginDto);
     }
 
