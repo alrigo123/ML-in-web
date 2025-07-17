@@ -11,6 +11,19 @@ export class UsersService {
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>
   ) { }
+
+  async getAllUsers(): Promise<User[]> {
+    return this.usersRepository.find();
+  }
+
+  // async findOne(id: number): Promise<User> {
+  //   const usuario = await this.usuarioRepo.findOne({ where: { id } });
+  //   if (!usuario) {
+  //     throw new Error(`Usuario con ID ${id} no encontrado`);
+  //   }
+  //   return usuario;
+  // }
+
   async create(createUserDto: CreateUserDto) {
     return await this.usersRepository.save(createUserDto);
   }

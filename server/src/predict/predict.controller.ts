@@ -15,7 +15,7 @@ export class PredictController {
       // Asegúrate de que la URL y el puerto sean correctos para tu API de Python
       const response = await axios.get(`http://localhost:8000/predict/xgboost?n=${n}&variable=${variable}`);
       // console.log("DEL SERVER TYPESCRIPT: ", response.data);
-      console.log("DEL SERVER TYPESCRIPT:",variable, "Predicciones:", response.data);
+      console.log("XGBOOST DEL SERVER TYPESCRIPT:",variable, "Predicciones:", response.data);
       return response.data;
     } catch (error) {
       console.error('Error fetching prediction:', error);
@@ -32,7 +32,7 @@ async getPredictionRandomForest(
     // Asegúrate de que la URL y el puerto sean correctos para tu API de Python
     const response = await axios.get(`http://localhost:8000/predict/random_forest?n=${n}&variable=${variable}`);
     // console.log("DEL SERVER TYPESCRIPT: ", response.data);
-    console.log("DEL SERVER TYPESCRIPT:",variable, "Predicciones:", response.data);
+    console.log("RANDOM FOREST DEL SERVER TYPESCRIPT:",variable, "Predicciones:", response.data);
     return response.data;
   } catch (error) {
     console.error('Error fetching prediction:', error);

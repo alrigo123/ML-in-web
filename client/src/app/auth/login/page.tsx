@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import axios from "axios"; // Import Axios
 import { useRouter } from "next/navigation";
 // import Link from "next/link";
+// import { AlertCircle, Cloud, Eye, EyeOff, Loader2, Lock, LogIn, Mail, UserPlus } from "lucide-react";
+import { Eye, EyeOff } from "lucide-react";
 
 const Login = () => {
     const [identifier, setIdentifier] = useState('');
@@ -10,6 +12,8 @@ const Login = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [shake, setShake] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
+
     const router = useRouter();
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -43,249 +47,12 @@ const Login = () => {
         }
     };
 
-    // return (
-    //     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
-    //         <div
-    //             className={`bg-white p-8 rounded-lg shadow-lg w-full max-w-md transform transition-all duration-500 ${shake ? "animate-shake" : ""}`}
-    //         >
-    //             <h2 className="text-3xl font-bold text-gray-900 text-center mb-6">
-    //                 Iniciar Sesión
-    //             </h2>
+    // Function to toggle password visibility.
+    const togglePasswordVisibility = () => {
+        setShowPassword(prev => !prev);
+    };
 
-    //             {error && (
-    //                 <div className="bg-red-100 text-red-700 p-3 rounded-lg mb-4 text-center">
-    //                     {error}
-    //                 </div>
-    //             )}
-
-    //             <form onSubmit={handleSubmit} className="space-y-6">
-    //                 <div>
-    //                     <label
-    //                         htmlFor="identifier"
-    //                         className="block text-sm font-medium text-gray-700"
-    //                     >
-    //                         Correo electrónico o nombre de usuario
-    //                     </label>
-    //                     <input
-    //                         id="identifier"
-    //                         type="text"
-    //                         className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-300"
-    //                         placeholder="Usuario o email"
-    //                         value={identifier}
-    //                         onChange={(e) => setIdentifier(e.target.value)}
-    //                         required
-    //                     />
-    //                 </div>
-    //                 <div>
-    //                     <label
-    //                         htmlFor="password"
-    //                         className="block text-sm font-medium text-gray-700"
-    //                     >
-    //                         Contraseña
-    //                     </label>
-    //                     <input
-    //                         id="password"
-    //                         type="password"
-    //                         className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-300"
-    //                         placeholder="Ingrese su contraseña"
-    //                         value={password}
-    //                         onChange={(e) => setPassword(e.target.value)}
-    //                         required
-    //                     />
-    //                 </div>
-
-    //                 <button
-    //                     type="submit"
-    //                     className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center disabled:bg-blue-400"
-    //                     disabled={loading}
-    //                 >
-    //                     {loading ? (
-    //                         <>
-    //                             <svg
-    //                                 className="animate-spin h-5 w-5 mr-2 text-white"
-    //                                 xmlns="http://www.w3.org/2000/svg"
-    //                                 fill="none"
-    //                                 viewBox="0 0 24 24"
-    //                             >
-    //                                 <circle
-    //                                     className="opacity-25"
-    //                                     cx="12"
-    //                                     cy="12"
-    //                                     r="10"
-    //                                     stroke="currentColor"
-    //                                     strokeWidth="4"
-    //                                 ></circle>
-    //                                 <path
-    //                                     className="opacity-75"
-    //                                     fill="currentColor"
-    //                                     d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-    //                                 ></path>
-    //                             </svg>
-    //                             Cargando...
-    //                         </>
-    //                     ) : (
-    //                         "Ingresar"
-    //                     )}
-    //                 </button>
-    //             </form>
-
-    //             <p className="text-center text-gray-600 mt-4">
-    //                 ¿No tienes cuenta?{" "}
-    //                 <Link href="/auth/register" className="text-blue-600 hover:underline">
-    //                     Regístrate
-    //                 </Link>
-    //             </p>
-    //         </div>
-
-    //         <style jsx global>{`
-    //     .animate-shake {
-    //       animation: shake 0.5s ease-in-out;
-    //     }
-    //     @keyframes shake {
-    //       0% {
-    //         transform: translateX(0);
-    //       }
-    //       20% {
-    //         transform: translateX(-5px);
-    //       }
-    //       40% {
-    //         transform: translateX(5px);
-    //       }
-    //       60% {
-    //         transform: translateX(-5px);
-    //       }
-    //       80% {
-    //         transform: translateX(5px);
-    //       }
-    //       100% {
-    //         transform: translateX(0);
-    //       }
-    //     }
-    //   `}</style>
-    //     </div>
-    // );
-
-    // return (
-    //     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center px-4 sm:px-6 lg:px-8">
-    //         <div
-    //             className={`bg-white p-8 rounded-lg shadow-lg w-full max-w-md transform transition-all duration-500 ${shake ? "animate-shake" : ""}`}
-    //         >
-    //             <h2 className="text-3xl font-bold text-gray-900 text-center mb-6">
-    //                 Iniciar Sesión
-    //             </h2>
-
-    //             {error && (
-    //                 <div className="bg-red-100 text-red-700 p-3 rounded-lg mb-4 text-center">
-    //                     {error}
-    //                 </div>
-    //             )}
-
-    //             <form onSubmit={handleSubmit} className="space-y-6">
-    //                 <div>
-    //                     <label
-    //                         htmlFor="identifier"
-    //                         className="block text-sm font-medium text-gray-700"
-    //                     >
-    //                         Correo electrónico o nombre de usuario
-    //                     </label>
-    //                     <input
-    //                         id="identifier"
-    //                         type="text"
-    //                         className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-300"
-    //                         placeholder="Usuario o email"
-    //                         value={identifier}
-    //                         onChange={(e) => setIdentifier(e.target.value)}
-    //                         required
-    //                     />
-    //                 </div>
-    //                 <div>
-    //                     <label
-    //                         htmlFor="password"
-    //                         className="block text-sm font-medium text-gray-700"
-    //                     >
-    //                         Contraseña
-    //                     </label>
-    //                     <input
-    //                         id="password"
-    //                         type="password"
-    //                         className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition duration-300"
-    //                         placeholder="Ingrese su contraseña"
-    //                         value={password}
-    //                         onChange={(e) => setPassword(e.target.value)}
-    //                         required
-    //                     />
-    //                 </div>
-
-    //                 <button
-    //                     type="submit"
-    //                     className="w-full bg-blue-600 text-white font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center disabled:bg-blue-400"
-    //                     disabled={loading}
-    //                 >
-    //                     {loading ? (
-    //                         <>
-    //                             <svg
-    //                                 className="animate-spin h-5 w-5 mr-2 text-white"
-    //                                 xmlns="http://www.w3.org/2000/svg"
-    //                                 fill="none"
-    //                                 viewBox="0 0 24 24"
-    //                             >
-    //                                 <circle
-    //                                     className="opacity-25"
-    //                                     cx="12"
-    //                                     cy="12"
-    //                                     r="10"
-    //                                     stroke="currentColor"
-    //                                     strokeWidth="4"
-    //                                 ></circle>
-    //                                 <path
-    //                                     className="opacity-75"
-    //                                     fill="currentColor"
-    //                                     d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
-    //                                 ></path>
-    //                             </svg>
-    //                             Cargando...
-    //                         </>
-    //                     ) : (
-    //                         "Ingresar"
-    //                     )}
-    //                 </button>
-    //             </form>
-
-    //             <p className="text-center text-gray-600 mt-4">
-    //                 ¿No tienes cuenta?{" "}
-    //                 <Link href="/auth/register" className="text-blue-600 hover:underline">
-    //                     Regístrate
-    //                 </Link>
-    //             </p>
-    //         </div>
-
-    //         <style jsx global>{`
-    //     .animate-shake {
-    //       animation: shake 0.5s ease-in-out;
-    //     }
-    //     @keyframes shake {
-    //       0% {
-    //         transform: translateX(0);
-    //       }
-    //       20% {
-    //         transform: translateX(-5px);
-    //       }
-    //       40% {
-    //         transform: translateX(5px);
-    //       }
-    //       60% {
-    //         transform: translateX(-5px);
-    //       }
-    //       80% {
-    //         transform: translateX(5px);
-    //       }
-    //       100% {
-    //         transform: translateX(0);
-    //       }
-    //     }
-    //   `}</style>
-    //     </div>
-    // );
+    //    GEMINI
 
     return (
         // Main container for the login page, centering the form vertically and horizontally.
@@ -327,20 +94,47 @@ const Login = () => {
                         />
                     </div>
 
-                    {/* Password input field. */}
+                    {/* Password input field with toggle. */}
                     <div className="mb-6">
                         <label htmlFor="password" className="block text-sm font-medium text-gray-300 mb-1">
                             Contraseña
                         </label>
-                        <input
-                            type="password"
-                            id="password"
-                            className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                            placeholder="Ingrese su contraseña"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
+                        <div className="relative">
+                            <input
+                                type={showPassword ? "text" : "password"} // Dynamically change input type
+                                id="password"
+                                className="w-full px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 pr-10" // Added pr-10 for icon space
+                                placeholder="Ingrese su contraseña"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                required
+                            />
+                            {/* Toggle button for password visibility */}
+                            <button
+                                type="button" // Important: type="button" to prevent form submission
+                                onClick={togglePasswordVisibility}
+                                className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-200 focus:outline-none"
+                                aria-label={showPassword ? "Hide password" : "Show password"}
+                            >
+                                {showPassword ? (
+                                    // EyeOff icon (inline SVG)
+                                    // <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-eye-off">
+                                    //     <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.54 18.54 0 0 1 2.21-3.6l-1.63-1.63A12.08 12.08 0 0 0 1 12c.78 2.34 2.39 4.29 4.34 5.43M12 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
+                                    //     <path d="M1 1l22 22"></path>
+                                    //     <path d="M15.02 15.02a4 4 0 0 1-5.04-5.04"></path>
+                                    //     <path d="M19.73 4.97A10.07 10.07 0 0 0 12 4c-7 0-11 8-11 8a18.54 18.54 0 0 0 2.21 3.6l1.63 1.63A12.08 12.08 0 0 1 1 12c.78-2.34 2.39-4.29 4.34-5.43"></path>
+                                    // </svg>
+                                    <EyeOff />
+                                ) : (
+                                    // Eye icon (inline SVG)
+                                    // <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="feather feather-eye">
+                                    //     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    //     <circle cx="12" cy="12" r="3"></circle>
+                                    // </svg>
+                                    <Eye />
+                                )}
+                            </button>
+                        </div>
                     </div>
 
                     {/* Submit button with loading indicator. */}
@@ -401,6 +195,7 @@ const Login = () => {
             `}</style>
         </div>
     );
+
 };
 
 export default Login;

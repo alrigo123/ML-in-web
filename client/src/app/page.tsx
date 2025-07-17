@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Cloud, Brain, TrendingUp, Zap, BarChart3, Activity, MapPin, ChevronRight, Map, LineChart, PieChart, BarChart } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
   const [currentModel, setCurrentModel] = useState(0);
@@ -70,7 +71,7 @@ export default function Home() {
           </h1>
 
           <h2 className="text-2xl md:text-3xl text-gray-300 font-light max-w-4xl mx-auto">
-            Advanced Machine Learning Models for Weather Time Series Prediction
+            Machine Learning Models for Weather Time Series Prediction
           </h2>
 
           {/* Model Carousel */}
@@ -98,10 +99,13 @@ export default function Home() {
           </div>
 
           {/* CTA Button */}
-          <button className="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-blue-500/25 inline-flex items-center space-x-2">
+          <Link
+            href="/prediction"
+            className="group bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl shadow-blue-500/25 inline-flex items-center space-x-2"
+          >
             <span>Explore Predictions</span>
             <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Link>
         </div>
       </div>
 
